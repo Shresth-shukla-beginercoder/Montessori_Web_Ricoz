@@ -1,0 +1,33 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = __importDefault(require("./auth"));
+const centres_1 = __importDefault(require("./centres"));
+const children_1 = __importDefault(require("./children"));
+const attendance_1 = __importDefault(require("./attendance"));
+const staff_1 = __importDefault(require("./staff"));
+const fees_1 = __importDefault(require("./fees"));
+const montessoriLogs_1 = __importDefault(require("./montessoriLogs"));
+const parents_1 = __importDefault(require("./parents"));
+const notifications_1 = __importDefault(require("./notifications"));
+const auditLogs_1 = __importDefault(require("./auditLogs"));
+const dashboard_1 = __importDefault(require("./dashboard"));
+const router = (0, express_1.Router)();
+router.get('/health', (_req, res) => {
+    res.status(200).json({ success: true, data: { status: 'v1-api-ok' } });
+});
+router.use('/auth', auth_1.default);
+router.use('/centres', centres_1.default);
+router.use('/children', children_1.default);
+router.use('/attendance', attendance_1.default);
+router.use('/staff', staff_1.default);
+router.use('/fees', fees_1.default);
+router.use('/montessori-logs', montessoriLogs_1.default);
+router.use('/parents', parents_1.default);
+router.use('/notifications', notifications_1.default);
+router.use('/audit-logs', auditLogs_1.default);
+router.use('/dashboard', dashboard_1.default);
+exports.default = router;
